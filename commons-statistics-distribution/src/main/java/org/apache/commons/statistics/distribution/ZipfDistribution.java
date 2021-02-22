@@ -55,11 +55,11 @@ public class ZipfDistribution extends AbstractDiscreteDistribution {
     public ZipfDistribution(int numberOfElements,
                             double exponent) {
         if (numberOfElements <= 0) {
-            throw new DistributionException(DistributionException.NEGATIVE,
+            throw new DistributionException(DistributionException.NOT_STRICTLY_POSITIVE,
                                             numberOfElements);
         }
         if (exponent <= 0) {
-            throw new DistributionException(DistributionException.NEGATIVE,
+            throw new DistributionException(DistributionException.NOT_STRICTLY_POSITIVE,
                                             exponent);
         }
 
@@ -171,7 +171,7 @@ public class ZipfDistribution extends AbstractDiscreteDistribution {
      * @param m Exponent (special case {@code m = 1} is the harmonic series).
      * @return the n<sup>th</sup> generalized harmonic number.
      */
-    private double generalizedHarmonic(final int n, final double m) {
+    private static double generalizedHarmonic(final int n, final double m) {
         double value = 0;
         for (int k = n; k > 0; --k) {
             value += 1 / Math.pow(k, m);

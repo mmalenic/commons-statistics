@@ -23,8 +23,8 @@ import org.junit.jupiter.api.Test;
  * Test cases for AbstractDiscreteDistribution default implementations.
  */
 class AbstractDiscreteDistributionTest {
-    protected final DiceDistribution diceDistribution = new DiceDistribution();
-    protected final double p = diceDistribution.probability(1);
+    private final DiceDistribution diceDistribution = new DiceDistribution();
+    private final double p = diceDistribution.probability(1);
 
     @Test
     void testInverseCumulativeProbabilityMethod() {
@@ -150,8 +150,6 @@ class AbstractDiscreteDistributionTest {
      * Simple distribution modeling a 6-sided die
      */
     class DiceDistribution extends AbstractDiscreteDistribution {
-        public static final long serialVersionUID = 23734213;
-
         private final double p = 1d / 6d;
 
         @Override
