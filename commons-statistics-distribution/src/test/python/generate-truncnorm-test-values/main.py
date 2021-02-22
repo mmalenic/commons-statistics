@@ -1,3 +1,18 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import os
 
 import numpy as np
@@ -5,6 +20,7 @@ from scipy import stats
 
 
 def generate_truncnorm_test_values():
+    """Generates all the test values for different cases."""
     # Defaults
     print_test_values((1.9, 1.3, -1.1, 3.4),
                       [0, 0.0001, 0.001, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 0.75, 0.900, 0.950, 0.975, 0.990,
@@ -24,6 +40,7 @@ def generate_truncnorm_test_values():
 
 
 def code_format_values(input_parameters, percentiles=None):
+    """Formats a test case into java code."""
     ppf_values, cdf_values, pdf_values, mean, var = create_test_values(input_parameters, percentiles)
     out = "new TruncatedNormalDistribution({:.15g}, {:.15g}, {:.15g}, {:.15g})".format(*input_parameters) + "," + \
           os.linesep + "new double[] " + format_values(ppf_values) + "," + os.linesep + "new double[] " + \
@@ -35,6 +52,7 @@ def code_format_values(input_parameters, percentiles=None):
 
 
 def print_test_values(input_parameters, percentiles=None):
+    """Prints a test case, including its java code."""
     ppf_values, cdf_values, pdf_values, mean, var = create_test_values(input_parameters, percentiles)
     print("for mean = {:.15g}, std = {:.15g}, lower = {:.15g}, upper = {:.15g}:".format(*input_parameters))
     print("ppf values: ", format_values(ppf_values))
@@ -47,6 +65,7 @@ def print_test_values(input_parameters, percentiles=None):
 
 
 def create_test_values(input_parameters, percentiles=None):
+    """Creates a test case, with defaults for percentiles."""
     truncnorm = stats.truncnorm(*bound_for(*input_parameters))
 
     if percentiles is None:
@@ -63,10 +82,12 @@ def create_test_values(input_parameters, percentiles=None):
 
 
 def bound_for(mean, sd, a, b):
+    """Calculates bounds for truncation range to be used with truncnorm."""
     return (a - mean) / sd, (b - mean) / sd, mean, sd
 
 
 def format_values(values):
+    """Formats a set of values."""
     return '{ ' + ', '.join('{:.15g}'.format(x) for x in values) + ' }'
 
 
