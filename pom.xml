@@ -14,6 +14,8 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+   Modified from original by Marko Malenic 2021.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
@@ -22,6 +24,7 @@
     <version>52</version>
   </parent>
 
+  <groupId>com.github.mmalenic</groupId>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>commons-statistics-parent</artifactId>
   <packaging>pom</packaging>
@@ -44,11 +47,16 @@
   </scm>
 
   <distributionManagement>
-    <site>
-      <id>apache.website</id>
-      <name>Apache Commons Site</name>
-      <url>scm:svn:https://svn.apache.org/repos/infra/websites/production/commons/content/proper/commons-statistics/</url>
-    </site>
+    <repository>
+      <id>github</id>
+      <name>GitHub mmalenic Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/mmalenic/commons-statistics</url>
+    </repository>
+    <snapshotRepository>
+      <id>github</id>
+      <name>GitHub mmalenic Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/mmalenic/commons-statistics</url>
+    </snapshotRepository>
   </distributionManagement>
 
   <developers>
