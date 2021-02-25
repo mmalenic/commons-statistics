@@ -42,6 +42,3 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       run: mvn clean deploy apache-rat:check clirr:check checkstyle:check pmd:check spotbugs:check javadoc:javadoc
-
-    - name: Report Coveralls
-      run: mvn clean test jacoco:report coveralls:report -Ptravis-jacoco
