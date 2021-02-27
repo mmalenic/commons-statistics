@@ -31,7 +31,7 @@ import org.apache.commons.rng.sampling.distribution.InverseTransformContinuousSa
  * inversion method</a> for generating random samples that follow the
  * distribution.
  */
-abstract class AbstractContinuousDistribution
+public abstract class AbstractContinuousDistribution
     implements ContinuousDistribution {
     // XXX Values copied from defaults in class
     // "o.a.c.math4.analysis.solvers.BaseAbstractUnivariateSolver"

@@ -24,7 +24,7 @@ import org.apache.commons.rng.sampling.distribution.InverseTransformDiscreteSamp
  * implementations are provided for some of the methods that do not vary
  * from distribution to distribution.
  */
-abstract class AbstractDiscreteDistribution
+public abstract class AbstractDiscreteDistribution
     implements DiscreteDistribution {
     /**
      * {@inheritDoc}
